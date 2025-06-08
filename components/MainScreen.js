@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { PaymentMenu } from './PaymentMenu'; 
 
 // Shared app data
 const appData = [
@@ -101,7 +102,9 @@ export const BalanceSection = ({ balance = 0.0, fuliza = 0.0 }) => {
 };
 
 // Quick Actions Component
-export const QuickActions = () => {
+export const QuickActions = ({ navigation }) => {
+  const [showPayMenu, setShowPayMenu] = useState(false);
+
   const actions = [
     { icon: 'sync-alt', label: 'Send and Request' },
     { icon: 'payment', label: 'Pay' },
@@ -110,23 +113,36 @@ export const QuickActions = () => {
   ];
 
   const handleAction = (label) => {
-    Alert.alert(label, 'This feature is coming soon.');
+    if (label === 'Pay') {
+      setShowPayMenu(true);
+    } else {
+      Alert.alert(label, 'This feature is coming soon.');
+    }
   };
 
   return (
-    <View style={styles.actionsRow}>
-      {actions.map(({ icon, label }) => (
-        <TouchableOpacity
-          key={label}
-          style={styles.action}
-          onPress={() => handleAction(label)}>
-          <MaterialIcons name={icon} size={28} color="#00acee" />
-          <Text style={styles.actionLabel}>{label.toUpperCase()}</Text>
-        </TouchableOpacity>
-      ))}
-    </View>
+    <>
+      <View style={styles.actionsRow}>
+        {actions.map(({ icon, label }) => (
+          <TouchableOpacity
+            key={label}
+            style={styles.action}
+            onPress={() => handleAction(label)}>
+            <MaterialIcons name={icon} size={28} color="#00acee" />
+            <Text style={styles.actionLabel}>{label.toUpperCase()}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Payment Menu Modal */}
+      <PaymentMenu 
+        visible={showPayMenu} 
+        onClose={() => setShowPayMenu(false)} 
+      />
+    </>
   );
 };
+
 
 // Transactions Section Component
 export const TransactionsSection = ({ transactions = sampleTransactions }) => (
@@ -280,7 +296,7 @@ export const MainScreen = ({
             title={index === 0 ? 'Financial Services' : 'More Services'}
             apps={apps}
           />
-        ))},
+        ))}
         {groupedApps.map((apps, index) => (
           <AppGridSection
             key={index}
