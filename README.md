@@ -1,3 +1,4 @@
+![M-Split Landscape](https://github.com/user-attachments/assets/67af04ba-aada-43cb-a7ce-eba965c1457e)
 
 
 # M-Pesa Bill Splitter Application - README
@@ -5,7 +6,11 @@
 ## Overview
 This M-Pesa Bill Splitter is an in-app feature that allows users to easily split bills with friends and family using Kenya's popular M-Pesa mobile payment system. The application provides a seamless, step-by-step process for dividing expenses and initiating group payments directly within the M-Pesa ecosystem.
 
-![Bill Splitter Demo](demo-gif-placeholder.gif) *Demo animation showing the bill splitting process*
+
+
+https://github.com/user-attachments/assets/d93341d7-8d56-409c-b8a4-966110aeb491
+
+
 
 ## Installation with Expo
 
@@ -24,8 +29,8 @@ This project is built with React Native using the Expo framework. Follow these s
 
 2. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/mpesa-bill-splitter.git
-   cd mpesa-bill-splitter
+   git clone https://github.com/ayuboketch/msplit.git
+   cd msplit
    ```
 
 3. **Install dependencies**
