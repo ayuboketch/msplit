@@ -277,36 +277,23 @@ export const MainScreen = ({
       <ScrollView
         style={styles.scrollWrapper}
         contentContainerStyle={styles.scrollContent}>
-        {/* Balance Section */}
         <BalanceSection balance={balance} fuliza={fuliza} />
-
-        {/* Quick Actions */}
         <QuickActions />
-
-        {/* Transactions */}
         <TransactionsSection />
-
-        {/* Ad Carousel */}
         <AdCarousel />
 
-        {/* App Grid Sections */}
+        {/* Fixed: comma removed */}
         {groupedApps.map((apps, index) => (
           <AppGridSection
-            key={index}
+            key={`apps-${index}`}
             title={index === 0 ? 'Financial Services' : 'More Services'}
             apps={apps}
           />
         ))}
-        {groupedApps.map((apps, index) => (
-          <AppGridSection
-            key={index}
-            title={index === 0 ? 'Financial Services' : 'More Services'}
-            apps={apps}
-          />
-        ))}
+        {/* Only include if you need duplicate sections intentionally */}
+        {/* {groupedApps.map(...)} */} 
       </ScrollView>
 
-      {/* Bottom Navigation */}
       <BottomNavigator active={activeTab} onNavigate={onNavigate} />
     </View>
   );
